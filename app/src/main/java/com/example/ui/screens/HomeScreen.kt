@@ -733,14 +733,15 @@ fun AppGuideCard() {
                                 Spacer(Modifier.height(2.dp))
                                 Text(desc,
                                     style = MaterialTheme.typography.bodySmall,
-                                    color = OnSurfaceVariant)
+                                    color = OnSurfaceVariant
+                                )
                             }
                         }
+                        // Optional: Add a subtle divider between list items except for the last one
                         if (i < sections.lastIndex) {
-                            HorizontalDivider(
-                                color = Color.White.copy(0.04f),
-                                modifier = Modifier.padding(vertical = 2.dp)
-                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            HorizontalDivider(color = Color.White.copy(0.03f))
+                            Spacer(modifier = Modifier.height(4.dp))
                         }
                     }
                 }
