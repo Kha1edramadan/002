@@ -29,8 +29,10 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Grant execute permission to gradlew
-        run: chmod +x gradlew
+      - name: Fix and Grant execute permission to gradlew
+        run: |
+          sed -i 's/\r$//' gradlew
+          chmod +x gradlew
 
       - name: Generate debug keystore
         run: |
