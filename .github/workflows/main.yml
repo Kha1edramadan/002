@@ -16,10 +16,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Fix gradle.properties JVM args
+      - name: Fix gradle.properties
         run: |
-          sed -i '/org.gradle.jvmargs/d' gradle.properties
-          echo 'org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8' >> gradle.properties
+          cat gradle.properties | tr -d '\r' | grep -v 'org.gradle.jvmargs' > /tmp/gp.tmp
+          echo 'org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8' >> /tmp/gp.tmp
+          mv /tmp/gp.tmp gradle.properties
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
